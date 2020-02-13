@@ -1,3 +1,5 @@
+require "./raylib"
+
 module Fude
   SCREEN_WIDTH = 128
   SCREEN_HEIGHT = 128
@@ -30,19 +32,13 @@ module Fude
     Raylib::draw_sphere(Raylib::Vector3.init(0, 0, 0), 0, Raylib::WHITE)
   end
 
-  module_function :cls
-
   def rectfill(x0, y0, x1, y1, col = 0)
     Raylib::draw_rectangle(x0, y0, x1, y1, COLORS[col])
   end
 
-  module_function :rectfill
-
   def print(str, x, y, col = 0)
     Raylib::draw_text(str, x, y, 8, COLORS[col])
   end
-
-  module_function :print
 
   def spr(n, x, y, w = 1.0, h = 1.0, flip_x = false, flip_y = false)
     s = SPRITE_SIZE
@@ -54,8 +50,6 @@ module Fude
       Raylib::WHITE
     )
   end
-
-  module_function :spr
 
   BTN_KEY = [
     Raylib::KEY_LEFT,
@@ -72,8 +66,6 @@ module Fude
     Raylib::is_key_down(BTN_KEY[i]) ||
     game_pad_key_down(i, p)
   end
-  
-  module_function :btn
 
   def game_pad_key_down(i, p)
     ANALOG_THRESHOLD = 0.5
@@ -105,37 +97,25 @@ module Fude
     Raylib::draw_circle(x, y, r, COLORS[col])
   end
 
-  module_function :circfill
-
   def rnd(max = 1.0)
     Math::rand * max
   end
-
-  module_function :rnd
 
   def sqrt(num)
     Math.sqrt(num)
   end
 
-  module_function :sqrt
-
   def abs(num)
     num.abs
   end
-
-  module_function :abs
 
   def flr(num)
     num.floor
   end
 
-  module_function :flr
-
   def line(x0, y0, x1, y1, col = 7)
     Raylib::draw_line(x0, y0, x1, y1, COLORS[col]);
   end
-
-  module_function :line
 
   def run(scene, title, scale = 3)
     Raylib::window(SCREEN_WIDTH * scale, SCREEN_HEIGHT * scale, title) do
@@ -176,6 +156,6 @@ module Fude
       end
     end
   end
-
-  module_function :run
 end
+
+include Fude

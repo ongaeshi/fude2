@@ -1,6 +1,4 @@
-require "./raylib"
 require "./fude"
-include Fude
 
 class Scene
   def initialize
@@ -12,7 +10,6 @@ class Scene
   def draw
 		cls(0)
 		rectfill 0,   0, 32, 32, 0
-		# print "0", 16, 16, 7
 		rectfill 32,  0, 32, 32, 1
 		rectfill 64,  0, 32, 32, 2
 		rectfill 96,  0, 32, 32, 3
