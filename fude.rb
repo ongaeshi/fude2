@@ -25,6 +25,8 @@ module Fude
   ]
 
   @@spritesheet = nil
+  @@scripts = []
+  @@drawers = []
 
   def cls(col = 0)
     Raylib::clear_background(COLORS[col])
@@ -117,7 +119,15 @@ module Fude
     Raylib::draw_line(x0, y0, x1, y1, COLORS[col]);
   end
 
-  def run(scene, title, scale = 3)
+  def script(&block)
+    @@scripts.push(Fiber.new(&block))
+  end
+
+  def draw(&block)
+    @@drawers.push(block)
+  end
+
+  def run(title, scale = 3)
     Raylib::window(SCREEN_WIDTH * scale, SCREEN_HEIGHT * scale, title) do
       Raylib::set_target_fps(30)
 
@@ -126,12 +136,16 @@ module Fude
 
       until Raylib::window_should_close
         # Update
-        scene.update()
+        @@scripts.each do |e| 
+          e.resume if e.alive?
+        end
 
         # Draw
         Raylib::draw do
           Raylib::texture_mode(target) do
-            scene.draw()
+            @@drawers.each do |e| 
+              e.call
+            end
           end
 
           Raylib::draw_texture_pro(
