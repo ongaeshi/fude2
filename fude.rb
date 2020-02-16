@@ -119,6 +119,10 @@ module Fude
     Raylib::draw_line(x0, y0, x1, y1, COLORS[col]);
   end
 
+  def yld(wait = 1)
+    1.upto(wait) { Fiber.yield }
+  end
+
   def script(&block)
     @@scripts.push(Fiber.new(&block))
   end
