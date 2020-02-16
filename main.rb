@@ -4,7 +4,7 @@ script do
   loop do
     @i = 0
 
-    @text = "Color Kind"
+    @text = "色番号のサンプルです。"
     yld 30
     @text = ""
 
@@ -13,7 +13,7 @@ script do
       yld 8
     end
 
-    yld 60
+    yld 120
   end
 end
 
@@ -25,8 +25,9 @@ end
 
 def tile_n(x, y, n)
   rectfill x, y, 32, 32, n
-  c = n == 7 ? 0 : 7
-  print n.to_s, x + 12, y + 12, c
+  c = n >= 6 ? 0 : 7
+  a = ["黒", "濃紺", "紫", "緑", "茶", "泥", "灰", "白", "赤", "橙", "黄", "黄緑", "青", "藍", "淡紅", "桃"]
+  print "#{n}\n#{a[n]}", x + 12, y + 4, c
 end
 
 def tile(n)

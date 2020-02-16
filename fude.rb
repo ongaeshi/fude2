@@ -39,7 +39,11 @@ module Fude
   end
 
   def print(str, x, y, col = 0)
-    Raylib::draw_text(str, x, y, 8, COLORS[col])
+    if @@font
+      Raylib::draw_text_ex(@@font, str, Raylib::Vector2.init(x, y), 8, 1, COLORS[col])
+    else
+      Raylib::draw_text(str, x, y, 8, COLORS[col])
+    end
   end
 
   def spr(n, x, y, w = 1.0, h = 1.0, flip_x = false, flip_y = false)
@@ -137,6 +141,8 @@ module Fude
 
       target = Raylib::load_render_texture(SCREEN_WIDTH, SCREEN_HEIGHT)
       @@spritesheet = Raylib::load_texture("resource/spritesheet.png")
+
+      @@font = Raylib::load_font("resource/font.fnt")
 
       until Raylib::window_should_close
         # Update
