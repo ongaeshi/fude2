@@ -4,8 +4,8 @@ script do
   loop do
     @i = 0
 
-    @text = "色番号のサンプルです。"
-    yld 30
+    @text = "色番号のサンプルです。あああああああ"
+    yld 120
     @text = ""
 
     1.upto(16) do |e|
@@ -20,7 +20,10 @@ end
 draw do
   cls
   tile(@i)
-  print(@text, 16, 64 - 4, 7)
+  if @text != ""
+    rect(16 - 2, 64 - 4 - 2, 128 - 32 + 4, 16 + 8, 7)
+    printrec(@text, 16, 64 - 4, 128 - 24, 16 + 4, 7)
+  end
 end
 
 def tile_n(x, y, n)
@@ -65,4 +68,4 @@ def tile(n)
   tile_n(96, 96, 15)
 end
 
-run("fude")
+run("fude", 2)

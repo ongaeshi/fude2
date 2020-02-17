@@ -34,6 +34,10 @@ module Fude
     Raylib::draw_sphere(Raylib::Vector3.init(0, 0, 0), 0, Raylib::WHITE)
   end
 
+  def rect(x0, y0, x1, y1, col = 0)
+    Raylib::draw_rectangle_lines(x0, y0, x1, y1, COLORS[col])
+  end
+
   def rectfill(x0, y0, x1, y1, col = 0)
     Raylib::draw_rectangle(x0, y0, x1, y1, COLORS[col])
   end
@@ -44,6 +48,10 @@ module Fude
     else
       Raylib::draw_text(str, x, y, 8, COLORS[col])
     end
+  end
+
+  def printrec(str, x, y, w, h, col = 0)
+    Raylib::draw_text_rec(@@font, str, Raylib::Rectangle.init(x, y, w, h), 8, 1, true, COLORS[col])
   end
 
   def spr(n, x, y, w = 1.0, h = 1.0, flip_x = false, flip_y = false)
