@@ -1,44 +1,35 @@
 require "./fude"
 
+def run_command(command)
+  1.upto(command.length) do |e|
+    @text = command[0..e]
+    @color = 0
+    yld 1
+  end
+
+  yld 15
+  @color = 7
+  yield
+  yld 30
+end
+
 script do
   loop do
     @array = []
 
-    t = "x = [1, 2, 3]"
-    1.upto(t.length) do |e|
-      @text = t[0..e]
-      @color = 0
-      yld 8
+    run_command("x = [1, 2, 3]") do
+      @array = [1, 2, 3]
+    end
+
+    run_command("x.push(4)") do
+      @array.push(4)
+    end
+
+    run_command("x.reverse!") do
+      @array.reverse!
     end
 
     yld 30
-    @color = 7
-    @array = [1, 2, 3]
-    yld 120
-
-    t = "x.push(4)"
-    1.upto(t.length) do |e|
-      @text = t[0..e]
-      @color = 0
-      yld 8
-    end
-
-    yld 30
-    @color = 7
-    @array.push(4)
-    yld 120
-
-    t = "x.reverse!"
-    1.upto(t.length) do |e|
-      @text = t[0..e]
-      @color = 0
-      yld 8
-    end
-
-    yld 30
-    @color = 7
-    @array.reverse!
-    yld 120
   end
 end
 
