@@ -143,7 +143,7 @@ module Fude
     @@drawers.push(block)
   end
 
-  def run(title, scale = 3, width = SCREEN_WIDTH, height = SCREEN_HEIGHT)
+  def run(title, scale = 2, width = SCREEN_WIDTH, height = SCREEN_HEIGHT)
     Raylib::window(width * scale, height * scale, title) do
       Raylib::set_target_fps(30)
 

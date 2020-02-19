@@ -53,4 +53,4 @@ draw do
   end
 end
 
-run("array animation", 2)
+run("array animation")
