@@ -145,7 +145,7 @@ module Fude
 
   def run(title, scale = 2, width = SCREEN_WIDTH, height = SCREEN_HEIGHT)
     Raylib::window(width * scale, height * scale, title) do
-      Raylib::set_target_fps(30)
+      Raylib::set_target_fps(60)
 
       target = Raylib::load_render_texture(width, height)
       @@spritesheet = Raylib::load_texture("resource/spritesheet.png")
