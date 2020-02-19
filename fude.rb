@@ -1,8 +1,8 @@
 require "./raylib"
 
 module Fude
-  SCREEN_WIDTH = 128
-  SCREEN_HEIGHT = 128
+  SCREEN_WIDTH = 256
+  SCREEN_HEIGHT = 256
   SPRITE_SIZE = 8
 
   COLORS = [
@@ -44,14 +44,14 @@ module Fude
 
   def print(str, x, y, col = 0)
     if @@font
-      Raylib::draw_text_ex(@@font, str, Raylib::Vector2.init(x, y), 8, 1, COLORS[col])
+      Raylib::draw_text_ex(@@font, str, Raylib::Vector2.init(x, y), 16, 1, COLORS[col])
     else
-      Raylib::draw_text(str, x, y, 8, COLORS[col])
+      Raylib::draw_text(str, x, y, 16, COLORS[col])
     end
   end
 
   def printrec(str, x, y, w, h, col = 0)
-    Raylib::draw_text_rec(@@font, str, Raylib::Rectangle.init(x, y, w, h), 8, 1, true, COLORS[col])
+    Raylib::draw_text_rec(@@font, str, Raylib::Rectangle.init(x, y, w, h), 16, 1, true, COLORS[col])
   end
 
   def spr(n, x, y, w = 1.0, h = 1.0, flip_x = false, flip_y = false)
