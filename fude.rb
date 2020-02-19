@@ -143,11 +143,11 @@ module Fude
     @@drawers.push(block)
   end
 
-  def run(title, scale = 3)
-    Raylib::window(SCREEN_WIDTH * scale, SCREEN_HEIGHT * scale, title) do
+  def run(title, scale = 3, width = SCREEN_WIDTH, height = SCREEN_HEIGHT)
+    Raylib::window(width * scale, height * scale, title) do
       Raylib::set_target_fps(30)
 
-      target = Raylib::load_render_texture(SCREEN_WIDTH, SCREEN_HEIGHT)
+      target = Raylib::load_render_texture(width, height)
       @@spritesheet = Raylib::load_texture("resource/spritesheet.png")
 
       @@font = Raylib::load_font("resource/font.fnt")
@@ -175,10 +175,10 @@ module Fude
               -target.texture.height
             ),
             Raylib::Rectangle.init(
-              (Raylib::get_screen_width() - SCREEN_WIDTH * scale) * 0.5,
-              (Raylib::get_screen_height() - SCREEN_HEIGHT * scale) * 0.5,
-              SCREEN_WIDTH * scale,
-              SCREEN_HEIGHT * scale
+              (Raylib::get_screen_width() - width * scale) * 0.5,
+              (Raylib::get_screen_height() - height * scale) * 0.5,
+              width * scale,
+              height * scale
             ),
             Raylib::Vector2.init(0, 0),
             0.0,
