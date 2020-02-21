@@ -136,6 +136,10 @@ module Fude
   end
 
   def script(&block)
+    @@scripts.push(Fiber.new { loop { block.call } })
+  end
+
+  def oneshot(&block)
     @@scripts.push(Fiber.new(&block))
   end
 

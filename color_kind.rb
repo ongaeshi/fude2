@@ -1,20 +1,18 @@
 require "./fude"
 
-script do
-  loop do
-    @i = 0
+oneshot do
+  @i = 0
 
-    @text = "色番号のサンプルです。"
-    yld 120
-    @text = ""
+  @text = "色番号のサンプルです。"
+  yld 120
+  @text = ""
 
-    1.upto(16) do |e|
-      @i = e
-      yld 8
-    end
-
-    yld 120
+  1.upto(16) do |e|
+    @i = e
+    yld 8
   end
+
+  yld 120
 end
 
 draw do

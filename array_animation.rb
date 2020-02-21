@@ -1,42 +1,40 @@
 require "./fude"
 
 script do
-  loop do
-    @text_offx = 0
-    @array = []
-    @array_offx = 0
+  @text_offx = 0
+  @array = []
+  @array_offx = 0
 
-    run_command("x = [1, 2, 3]") do
-      @array = [1, 2, 3]
-    end
-
-    run_command("x.push(4)") do
-      @array.push(4)
-    end
-
-    run_command("x.unshift(5)") do
-      @array_offx = -32
-      @array.unshift 5
-    end
-
-    run_command("x.reverse!") do
-      @array.reverse!
-    end
-
-    run_command("x = x.map { |e| e * 2 }", -32) do
-      @array = @array.map { |e| e * 2 }
-    end
-
-    run_command("x = x.fill(9)") do
-      @array = @array.fill(9)
-    end
-
-    run_command("x.delete(9)") do
-      @array.delete(9)
-    end
-
-    yld 30
+  run_command("x = [1, 2, 3]") do
+    @array = [1, 2, 3]
   end
+
+  run_command("x.push(4)") do
+    @array.push(4)
+  end
+
+  run_command("x.unshift(5)") do
+    @array_offx = -32
+    @array.unshift 5
+  end
+
+  run_command("x.reverse!") do
+    @array.reverse!
+  end
+
+  run_command("x = x.map { |e| e * 2 }", -32) do
+    @array = @array.map { |e| e * 2 }
+  end
+
+  run_command("x = x.fill(9)") do
+    @array = @array.fill(9)
+  end
+
+  run_command("x.delete(9)") do
+    @array.delete(9)
+  end
+
+  yld 30
 end
 
 draw do
