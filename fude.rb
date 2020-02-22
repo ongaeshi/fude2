@@ -136,7 +136,11 @@ module Fude
   end
 
   def script(&block)
-    @@scripts.push(Fiber.new { loop { block.call } })
+    if Raylib::get_is_gif
+      oneshot(&block)
+    else
+      @@scripts.push(Fiber.new { loop { block.call } })
+    end
   end
 
   def oneshot(&block)
@@ -145,6 +149,10 @@ module Fude
 
   def draw(&block)
     @@drawers.push(block)
+  end
+
+  def all_scripts_end?
+    @@scripts.all? { |e| !e.alive? }
   end
 
   def run(title, scale = 2, width = SCREEN_WIDTH, height = SCREEN_HEIGHT)
@@ -156,7 +164,9 @@ module Fude
 
       @@font = Raylib::load_font("resource/font.fnt")
 
-      until Raylib::window_should_close
+      Raylib::gif_begin if Raylib::get_is_gif
+
+      until Raylib::window_should_close || all_scripts_end?
         # Update
         @@scripts.each do |e| 
           e.resume if e.alive?
@@ -188,8 +198,12 @@ module Fude
             0.0,
             Raylib::WHITE
           )
+
+          Raylib::gif_write_frame if Raylib::get_is_gif
         end
       end
+
+      Raylib::gif_end if Raylib::get_is_gif
     end
   end
 end
