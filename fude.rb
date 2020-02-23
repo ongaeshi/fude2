@@ -155,6 +155,10 @@ module Fude
     @@scripts.all? { |e| !e.alive? }
   end
 
+  def gif_file_name
+    FILE_NAME.sub(File.extname(FILE_NAME), "") + ".gif"
+  end
+
   def run(title, scale = 2, width = SCREEN_WIDTH, height = SCREEN_HEIGHT)
     Raylib::window(width * scale, height * scale, title) do
       Raylib::set_target_fps(60)
@@ -164,7 +168,7 @@ module Fude
 
       @@font = Raylib::load_font("resource/font.fnt")
 
-      Raylib::gif_begin if Raylib::get_is_gif
+      Raylib::gif_begin(gif_file_name) if Raylib::get_is_gif
 
       until Raylib::window_should_close || all_scripts_end?
         # Update
