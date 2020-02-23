@@ -37,14 +37,16 @@ script do
   yld 30
 end
 
+PADDING = 2
+
 draw do
   cls 13
   print(@text, 64 + @text_offx, 32, @color)
 
   (0...@array.length).each do |i|
     x = 64 + 32 * i - 1 + @array_offx
-    rect(x, 64, 32, 32, 7)
-    print(@array[i].to_s, x + 12, 64 + 8, 7)
+    rect(x + PADDING, 64 + PADDING, 32 - PADDING, 32 - PADDING, 7)
+    print(@array[i].to_s, x + 12 + PADDING, 64 + 8 + PADDING, 7)
   end
 end
 
