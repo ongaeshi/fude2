@@ -170,7 +170,7 @@ module Fude
 
       Raylib::gif_begin(gif_file_name) if Raylib::get_is_gif
 
-      until Raylib::window_should_close || all_scripts_end?
+      until Raylib::window_should_close || (Raylib::get_is_gif && all_scripts_end?)
         # Update
         @@scripts.each do |e| 
           e.resume if e.alive?
