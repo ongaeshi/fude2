@@ -128,7 +128,7 @@ module Fude
   end
 
   def line(x0, y0, x1, y1, col = 7)
-    Raylib::draw_line(x0, y0, x1, y1, COLORS[col]);
+    Raylib::draw_line(x0, y0, x1, y1, COLORS[col])
   end
 
   def yld(wait = 1)
