@@ -28,6 +28,18 @@ module Fude
   @@scripts = []
   @@drawers = []
 
+  def set_colors(colors)
+    COLORS = colors
+  end
+
+  def hex_color(code)
+    Raylib::Color.init(
+      (code >> 16) & 0xff,
+      (code >> 8) & 0xff,
+      code & 0xff,
+      255)
+  end
+
   def cls(col = 0)
     Raylib::clear_background(COLORS[col])
     # slower patch: https://github.com/raysan5/raylib/issues/922
