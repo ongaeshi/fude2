@@ -65,4 +65,4 @@ def tile(n)
   tile_n(3, 3, 15)
 end
 
-run("fude", 1)
+run("fude", 256, 256, 1)

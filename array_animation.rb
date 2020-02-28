@@ -129,4 +129,4 @@ def run_command(command, offx = 0)
   yld 30
 end
 
-run("array animation")
+run("array animation", 256, 128, 2)

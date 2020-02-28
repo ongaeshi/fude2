@@ -171,7 +171,7 @@ module Fude
     FILE_NAME.sub(File.extname(FILE_NAME), "") + ".gif"
   end
 
-  def run(title, scale = 2, width = SCREEN_WIDTH, height = SCREEN_HEIGHT)
+  def run(title, width = SCREEN_WIDTH, height = SCREEN_HEIGHT, scale = 2)
     Raylib::window(width * scale, height * scale, title) do
       Raylib::set_target_fps(60)
 
