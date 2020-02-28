@@ -22,6 +22,15 @@ script do
     @array.unshift 5
   end
 
+  run_command("x = x.shift") do
+    @array_offx = 0
+    @array.shift
+  end
+
+  run_command("x.pop") do
+    @array.pop
+  end
+
   run_command("x.reverse!") do
     @array.reverse!
   end
@@ -30,12 +39,60 @@ script do
     @array = @array.map { |e| e * 2 }
   end
 
+  run_command("x = x.rotate(2)") do
+    @array = @array.rotate
+    yld 30
+    @array = @array.rotate
+  end
+
+  run_command("x.union([1, 2])") do
+    @array = @array.union([1, 2])
+  end
+
+  run_command("x.concat([1, 2])") do
+    @array_offx = -32
+    @array.concat([1, 2])
+  end
+
+  run_command("x = x.sort") do
+    @array = @array.sort
+  end
+
+  run_command("x[1..2] = [2, 2]") do
+    @array[0..1] = [2, 2]
+  end
+
+  run_command("x[0, 4] = [0, 0, 0]") do
+    @array_offx = -16
+    @array[0, 4] = [0, 0, 0]
+  end
+
+  run_command("x = x.uniq") do
+    @array_offx = 0
+    @array = @array.uniq
+  end
+
+  run_command("x.delete_at(1)") do
+    @array_offx = 16
+    @array.delete_at(1)
+  end
+
+  run_command("x *= 2") do
+    @array_offx = 0
+    @array *= 2
+  end
+
+  run_command("x.delete(6)") do
+    @array_offx = 32
+    @array.delete(6)
+  end
+
   run_command("x = x.fill(9)") do
     @array = @array.fill(9)
   end
 
-  run_command("x.delete(9)") do
-    @array.delete(9)
+  run_command("x.clear") do
+    @array.clear
   end
 
   yld 30
