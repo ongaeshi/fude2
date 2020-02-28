@@ -7,13 +7,13 @@ module Fude
 
   COLORS = {
      0 => Raylib::Color.init(0, 0, 0, 255), # black
-     1 => Raylib::Color.init(255, 241, 232, 255), # white
-     2 => Raylib::Color.init(29, 43, 83, 255), # dark-blue
-     3 => Raylib::Color.init(126, 37, 83, 255), # dark-purple
-     4 => Raylib::Color.init(0, 135, 81, 255), # dark-green
-     5 => Raylib::Color.init(171, 82, 54, 255), # brown
-     6 => Raylib::Color.init(95, 87, 79, 255), # dark-gray
-     7 => Raylib::Color.init(194, 195, 199, 255), # light-gray
+     1 => Raylib::Color.init(29, 43, 83, 255), # dark-blue
+     2 => Raylib::Color.init(126, 37, 83, 255), # dark-purple
+     3 => Raylib::Color.init(0, 135, 81, 255), # dark-green
+     4 => Raylib::Color.init(171, 82, 54, 255), # brown
+     5 => Raylib::Color.init(95, 87, 79, 255), # dark-gray
+     6 => Raylib::Color.init(194, 195, 199, 255), # light-gray
+     7 => Raylib::Color.init(255, 241, 232, 255), # white
      8 => Raylib::Color.init(255, 0, 77, 255), # red
      9 => Raylib::Color.init(255, 163, 0, 255), # orange
     10 => Raylib::Color.init(255, 236, 39, 255), # yellow
