@@ -15,25 +15,23 @@ def tree(n, x0, y0, l, ang)
 end
 
 script do
-  set_colors([
-    hex_color(0xfef6e4),
-    hex_color(0x001858),
-    hex_color(0xF5AC61),
-    hex_color(0x70A61F),
-    hex_color(0xDDF2AE),
-    hex_color(0x214001),
-    hex_color(0x2E5902),
-    hex_color(0x70A61F),
-    hex_color(0xDDF2AE),
-    hex_color(0x214001),
-    hex_color(0x2E5902),
-    hex_color(0x70A61F),
-    hex_color(0xDDF2AE),
-    hex_color(0x214001),
-    hex_color(0x2E5902),
-    hex_color(0x70A61F),
-    hex_color(0xDDF2AE),
-  ])
+  set_color_hash(0, hex_color(0xfef6e4))
+  set_color_hash(1, hex_color(0x001858))
+  set_color_hash(2, hex_color(0xF5AC61))
+  set_color_hash(3, hex_color(0x70A61F))
+  set_color_hash(4, hex_color(0xDDF2AE))
+  set_color_hash(5, hex_color(0x214001))
+  set_color_hash(6, hex_color(0x2E5902))
+  set_color_hash(7, hex_color(0x70A61F))
+  set_color_hash(8, hex_color(0xDDF2AE))
+  set_color_hash(9, hex_color(0x214001))
+  set_color_hash(10, hex_color(0x2E5902))
+  set_color_hash(11, hex_color(0x70A61F))
+  set_color_hash(12, hex_color(0xDDF2AE))
+  set_color_hash(13, hex_color(0x214001))
+  set_color_hash(14, hex_color(0x2E5902))
+  set_color_hash(15, hex_color(0x70A61F))
+  set_color_hash(16, hex_color(0xDDF2AE))
 
   @n = 0
 

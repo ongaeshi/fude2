@@ -1,11 +1,9 @@
 require "./fude"
 
 script do
-  set_colors([
-    hex_color(0x55423d),
-    hex_color(0xfffffe),
-    hex_color(0xfff3ec)
-  ])
+  set_color_hash(:bg, hex_color(0x55423d))
+  set_color_hash(:input, hex_color(0xfff3ec))
+  set_color_hash(:done, hex_color(0xfffffe))
 
   @text_offx = 0
   @array = []
@@ -46,13 +44,13 @@ end
 PADDING = 2
 
 draw do
-  cls
+  cls :bg
   print(@text, 64 + @text_offx, 32, @color)
 
   (0...@array.length).each do |i|
     x = 64 + 32 * i - 1 + @array_offx
-    rect(x + PADDING, 64 + PADDING, 32 - PADDING, 32 - PADDING, 1)
-    print(@array[i].to_s, x + 12 + PADDING, 64 + 8 + PADDING, 1)
+    rect(x + PADDING, 64 + PADDING, 32 - PADDING, 32 - PADDING, :done)
+    print(@array[i].to_s, x + 12 + PADDING, 64 + 8 + PADDING, :done)
   end
 end
 
@@ -63,13 +61,13 @@ def run_command(command, offx = 0)
   a = command.split("")
   a.each do |e|
     @text += e
-    @color = 2
+    @color = :input
     yld 4
   end
 
   yld 30
   @text = @text
-  @color = 1
+  @color = :done
   yield
   yld 30
 end

@@ -5,31 +5,31 @@ module Fude
   SCREEN_HEIGHT = 256
   SPRITE_SIZE = 8
 
-  COLORS = [
-    Raylib::Color.init(0, 0, 0, 255), # black
-    Raylib::Color.init(255, 241, 232, 255), # white
-    Raylib::Color.init(29, 43, 83, 255), # dark-blue
-    Raylib::Color.init(126, 37, 83, 255), # dark-purple
-    Raylib::Color.init(0, 135, 81, 255), # dark-green
-    Raylib::Color.init(171, 82, 54, 255), # brown
-    Raylib::Color.init(95, 87, 79, 255), # dark-gray
-    Raylib::Color.init(194, 195, 199, 255), # light-gray
-    Raylib::Color.init(255, 0, 77, 255), # red
-    Raylib::Color.init(255, 163, 0, 255), # orange
-    Raylib::Color.init(255, 236, 39, 255), # yellow
-    Raylib::Color.init(0, 228, 54, 255), # green
-    Raylib::Color.init(41, 173, 255, 255), # blue
-    Raylib::Color.init(131, 118, 156, 255), # indigo
-    Raylib::Color.init(255, 119, 168, 255), # pink
-    Raylib::Color.init(255, 204, 170, 255),  # peach
-  ]
+  COLORS = {
+     0 => Raylib::Color.init(0, 0, 0, 255), # black
+     1 => Raylib::Color.init(255, 241, 232, 255), # white
+     2 => Raylib::Color.init(29, 43, 83, 255), # dark-blue
+     3 => Raylib::Color.init(126, 37, 83, 255), # dark-purple
+     4 => Raylib::Color.init(0, 135, 81, 255), # dark-green
+     5 => Raylib::Color.init(171, 82, 54, 255), # brown
+     6 => Raylib::Color.init(95, 87, 79, 255), # dark-gray
+     7 => Raylib::Color.init(194, 195, 199, 255), # light-gray
+     8 => Raylib::Color.init(255, 0, 77, 255), # red
+     9 => Raylib::Color.init(255, 163, 0, 255), # orange
+    10 => Raylib::Color.init(255, 236, 39, 255), # yellow
+    11 => Raylib::Color.init(0, 228, 54, 255), # green
+    12 => Raylib::Color.init(41, 173, 255, 255), # blue
+    13 => Raylib::Color.init(131, 118, 156, 255), # indigo
+    14 => Raylib::Color.init(255, 119, 168, 255), # pink
+    15 => Raylib::Color.init(255, 204, 170, 255),  # peach
+  }
 
   @@spritesheet = nil
   @@scripts = []
   @@drawers = []
 
-  def set_colors(colors)
-    COLORS = colors
+  def set_color_hash(key, value)
+    COLORS[key] = value
   end
 
   def hex_color(code)
